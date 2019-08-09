@@ -11,4 +11,11 @@ CMD_LINE="$CMD_LINE --bind-interfaces"
 CMD_LINE="$CMD_LINE --except-interface=lo"
 CMD_LINE="$CMD_LINE --dhcp-range=$IP_RANGE"
 
+# treat remaining arguments as dhcp-host definitions
+shift 2
+for i in "${@}"
+do
+	CMD_LINE="$CMD_LINE --dhcp-host=$i"
+done
+
 $CMD_LINE
