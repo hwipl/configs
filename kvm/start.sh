@@ -9,7 +9,7 @@ VM_SCRIPT=./kvm.sh
 $BR_SCRIPT vmbr0 10.10.10.1/24
 
 # start dnsmasq on bridge interface
-$DNSMASQ_SCRIPT vmbr0 10.10.10.2 10.10.10.254
+$DNSMASQ_SCRIPT vmbr0 10.10.10.20,10.10.10.254
 
 # enable nat and ip forwarding on bridge interface
 $NAT_SCRIPT vmbr0 10.10.10.0/24

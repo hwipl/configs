@@ -2,11 +2,13 @@
 
 DNSMASQ=/usr/bin/dnsmasq
 IF=$1
-IP_START=$2
-IP_END=$3
+IP_RANGE=$2
 
-$DNSMASQ \
-	--interface "$IF" \
-	--bind-interfaces \
-	--except-interface lo \
-	--dhcp-range="$IP_START","$IP_END"
+# set command line
+CMD_LINE="$DNSMASQ"
+CMD_LINE="$CMD_LINE --interface=$IF"
+CMD_LINE="$CMD_LINE --bind-interfaces"
+CMD_LINE="$CMD_LINE --except-interface=lo"
+CMD_LINE="$CMD_LINE --dhcp-range=$IP_RANGE"
+
+$CMD_LINE
