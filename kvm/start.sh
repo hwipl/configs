@@ -16,4 +16,4 @@ $DNSMASQ_SCRIPT vmbr0 10.10.10.20,10.10.10.254 \
 $NAT_SCRIPT vmbr0 10.10.10.0/24
 
 # start vm(s)
-$VM_SCRIPT vm0.qcow2 vmtap0 52:54:00:00:00:02
+$VM_SCRIPT 0 vm0.qcow2 vmtap0 52:54:00:00:00:02
