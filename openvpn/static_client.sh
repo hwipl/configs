@@ -9,6 +9,13 @@ LINES="# Client configuration
 remote $SERVER_ADDRESS
 dev tun
 ifconfig $CLIENT_IP $SERVER_IP
-secret $KEY_FILE"
+secret $KEY_FILE
+keepalive 10 60
+ping-timer-rem
+persist-tun
+persist-key
+user nobody
+group nobody
+daemon"
 
 echo "$LINES"
