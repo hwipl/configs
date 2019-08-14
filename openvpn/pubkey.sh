@@ -16,6 +16,14 @@ CLIENT_SCRIPT=./pubkey_client.sh
 
 FOLDER="pubkey-$SERVER_ADDRESS"
 
+if [ -d "$FOLDER" ]; then
+	echo "Configuration already exists."
+	echo "If you want to create additional client configurations, use:"
+	echo "$GENCLIENT_SCRIPT $FOLDER <client-name>"
+	echo "$CLIENT_SCRIPT $SERVER_ADDRESS <client_name> > <config_file>"
+	exit
+fi
+
 mkdir "$FOLDER"
 $GENCA_SCRIPT "$FOLDER"
 $GENSERVER_SCRIPT "$FOLDER" server
