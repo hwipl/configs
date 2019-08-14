@@ -11,7 +11,7 @@ SERVER_IP=$3
 CLIENT_IP=$4
 
 # other scripts
-GENKEY_SCRIPT=./genkey.sh
+GENKEY_SCRIPT=./static_genkey.sh
 SERVER_SCRIPT=./static_server.sh
 CLIENT_SCRIPT=./static_client.sh
 
