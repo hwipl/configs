@@ -1,12 +1,12 @@
 #!/bin/bash
 
 SERVER_IP=$1
-CLIENT_IP=$2
+SERVER_NETMASK=$2
 KEY_NAME=$3
 
 LINES="# Server configuration
 dev tun
-ifconfig $SERVER_IP $CLIENT_IP
+server $SERVER_IP $SERVER_NETMASK
 ca ca.crt
 cert $KEY_NAME.crt
 key $KEY_NAME.key

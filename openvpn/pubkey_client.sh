@@ -1,14 +1,12 @@
 #!/bin/bash
 
 SERVER_ADDRESS=$1
-SERVER_IP=$2
-CLIENT_IP=$3
-KEY_NAME=$4
+KEY_NAME=$2
 
 LINES="# Client configuration
+client
 remote $SERVER_ADDRESS
 dev tun
-ifconfig $CLIENT_IP $SERVER_IP
 ca ca.crt
 cert $KEY_NAME.crt
 key $KEY_NAME.key
