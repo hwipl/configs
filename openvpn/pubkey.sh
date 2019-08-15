@@ -18,9 +18,17 @@ FOLDER="pubkey-$SERVER_ADDRESS"
 
 if [ -d "$FOLDER" ]; then
 	echo "Configuration already exists."
-	echo "If you want to create additional client configurations, use:"
-	echo "$GENCLIENT_SCRIPT $FOLDER <client-name>"
-	echo "$CLIENT_SCRIPT $SERVER_ADDRESS <client_name> > <config_file>"
+	echo "If you want to create an additional client configuration,"
+	echo "enter client name below."
+	read -rp "Client name: "  CLIENT_NAME
+	if [ "$CLIENT_NAME" == "" ]; then
+		exit
+	fi
+	$GENCLIENT_SCRIPT "$FOLDER" "$CLIENT_NAME"
+	$CLIENT_SCRIPT \
+		"$SERVER_ADDRESS" \
+		"$CLIENT_NAME" \
+		> "$FOLDER/$CLIENT_NAME/client.ovpn"
 	exit
 fi
 
