@@ -19,6 +19,18 @@ CLIENT_SCRIPT=./pubkey_client.sh
 
 FOLDER="pubkey-$SERVER_ADDRESS"
 
+if [ "$#" -lt 3 ]; then
+	echo "Usage:"
+	echo "  $0 <server_address> <server_ip> <server_netmask> [nopass]"
+	echo "Mandatory arguments:"
+	echo "  server_address:   server's vpn external address for vpn tunnel"
+	echo "  server_ip:        vpn internal ip address of server"
+	echo "  server_netmask:   vpn internal netmask of server"
+	echo "Optional arguments:"
+	echo "  nopass:           do not use passwords for keys"
+	exit
+fi
+
 if [ -d "$FOLDER" ]; then
 	echo "Configuration already exists."
 	echo "If you want to create an additional client configuration,"
