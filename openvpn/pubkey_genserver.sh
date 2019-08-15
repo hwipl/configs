@@ -2,13 +2,14 @@
 
 FOLDER=$1
 NAME=$2
+OPTS=$3
 
 EASYRSA=/usr/bin/easyrsa
 
 cd "$FOLDER" || exit
 
 # create server certificate and diffie hellman parameters
-$EASYRSA build-server-full "$NAME" 
+$EASYRSA build-server-full "$NAME" "$OPTS"
 $EASYRSA gen-dh
 
 # copy files to server's directory
