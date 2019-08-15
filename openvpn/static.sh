@@ -17,6 +17,17 @@ CLIENT_SCRIPT=./static_client.sh
 
 FOLDER="static-$SERVER_ADDRESS"
 
+if [ "$#" -lt 4 ]; then
+	echo "Usage:"
+	echo "  $0 <server_address> <key_file> <server_ip> <client_ip>"
+	echo "Mandatory arguments:"
+	echo "  server_address:   server's vpn external address for vpn tunnel"
+	echo "  key_file:         file for shared secret key"
+	echo "  server_ip:        vpn internal ip address of server"
+	echo "  client_ip:        vpn internal ip address of client"
+	exit
+fi
+
 mkdir "$FOLDER"
 $GENKEY_SCRIPT "$FOLDER/$KEY_FILE"
 $SERVER_SCRIPT \
