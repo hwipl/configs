@@ -7,6 +7,9 @@ SERVER_ADDRESS=$1
 SERVER_IP=$2
 SERVER_NETMASK=$3
 
+# options for certificate creation
+OPTS=$4
+
 # other scripts
 GENCA_SCRIPT=./pubkey_genca.sh
 GENSERVER_SCRIPT=./pubkey_genserver.sh
@@ -24,7 +27,7 @@ if [ -d "$FOLDER" ]; then
 	if [ "$CLIENT_NAME" == "" ]; then
 		exit
 	fi
-	$GENCLIENT_SCRIPT "$FOLDER" "$CLIENT_NAME"
+	$GENCLIENT_SCRIPT "$FOLDER" "$CLIENT_NAME" "$OPTS"
 	$CLIENT_SCRIPT \
 		"$SERVER_ADDRESS" \
 		"$CLIENT_NAME" \
@@ -33,14 +36,14 @@ if [ -d "$FOLDER" ]; then
 fi
 
 mkdir "$FOLDER"
-$GENCA_SCRIPT "$FOLDER"
-$GENSERVER_SCRIPT "$FOLDER" server
+$GENCA_SCRIPT "$FOLDER" "$OPTS"
+$GENSERVER_SCRIPT "$FOLDER" server "$OPTS"
 $SERVER_SCRIPT \
 	"$SERVER_IP" \
 	"$SERVER_NETMASK" \
 	"server" \
 	> "$FOLDER/server/server.ovpn"
-$GENCLIENT_SCRIPT "$FOLDER" client
+$GENCLIENT_SCRIPT "$FOLDER" client "$OPTS"
 $CLIENT_SCRIPT \
 	"$SERVER_ADDRESS" \
 	"client" \
