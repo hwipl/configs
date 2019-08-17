@@ -6,6 +6,11 @@ CONFD=/usr/share/doc/dovecot/example-config/conf.d
 
 CP=/usr/bin/cp
 
+if [ -f "$ETC/dovecot.conf" ] || [ -d "$ETC/conf.d" ]; then
+	echo "Configs already exist."
+	exit
+fi
+
 $CP $DOVECOTCONF $ETC 
 $CP -r $CONFD $ETC
 
