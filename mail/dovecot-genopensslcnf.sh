@@ -9,6 +9,11 @@ EMAIL_CONTACT=$2
 # destination openssl config file
 SSLCNF=/etc/ssl/dovecot-openssl.cnf
 
+if [ -f "$SSLCNF" ]; then
+	echo "$SSLCNF already exists."
+	exit
+fi
+
 # dovecot-openssl.cnf based on /usr/share/doc/dovecot/dovecot-openssl.cnf
 CONFIG="# dovecot-openssl.cnf:
 # * copy this file into folder /etc/ssl/
