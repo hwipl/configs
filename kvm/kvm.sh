@@ -22,4 +22,8 @@ if [ -n "$4" ]; then
 	CMD_LINE="$CMD_LINE,mac=$MAC"
 fi
 
+# random generator device
+CMD_LINE="$CMD_LINE -object rng-random,filename=/dev/urandom,id=rng0"
+CMD_LINE="$CMD_LINE -device virtio-rng-pci,rng=rng0"
+
 $CMD_LINE
