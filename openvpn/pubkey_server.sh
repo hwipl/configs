@@ -6,6 +6,7 @@ KEY_NAME=$3
 
 LINES="# Server configuration
 dev tun
+topology subnet
 server $SERVER_IP $SERVER_NETMASK
 ca ca.crt
 cert $KEY_NAME.crt
