@@ -21,3 +21,10 @@ group nobody
 daemon"
 
 echo "$LINES"
+
+# treat remaining arguments as push routes
+shift 3
+for i in "${@}"
+do
+	echo "push \"route $i\""
+done
