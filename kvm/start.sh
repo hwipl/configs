@@ -6,6 +6,7 @@ DNSMASQ_SCRIPT=./dnsmasq.sh
 NAT_SCRIPT=./nat.sh
 VM_SCRIPT=./kvm.sh
 ADD_ROUTE=../net/add_route.sh
+FORWARD_PORT=../net/forward_port.sh
 
 # bridge config
 BRIDGE_PREFIX=10.10.10.0/24
@@ -44,6 +45,9 @@ $ADD_ROUTE 10.10.11.0/24 10.10.10.2 vmbr0
 
 # enable nat and ip forwarding on bridge interface
 $NAT_SCRIPT vmbr0 $BRIDGE_PREFIX
+
+# forward additional ports to vms on the bridge
+$FORWARD_PORT 1194 10.10.10.2 1194
 
 # start vm(s)
 $VM_SCRIPT 0 vm0.qcow2 vmtap0 $VM0_MAC
