@@ -5,6 +5,7 @@ BR_SCRIPT=./bridge.sh
 DNSMASQ_SCRIPT=./dnsmasq.sh
 NAT_SCRIPT=./nat.sh
 VM_SCRIPT=./kvm.sh
+ADD_ROUTE=../net/add_route.sh
 
 # bridge config
 BRIDGE_PREFIX=10.10.10.0/24
@@ -37,6 +38,9 @@ $DNSMASQ_SCRIPT vmbr0 $DYNIP_START,$DYNIP_END $BRIDGE_ROUTES \
 	$VM1_MAC,$VM1_IP \
 	$VM2_MAC,$VM2_IP \
 	$VM3_MAC,$VM3_IP
+
+# add additional routes to bridge interface itself
+$ADD_ROUTE 10.10.11.0/24 10.10.10.2 vmbr0
 
 # enable nat and ip forwarding on bridge interface
 $NAT_SCRIPT vmbr0 $BRIDGE_PREFIX
