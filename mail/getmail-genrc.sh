@@ -24,6 +24,8 @@ password = $PASSWORD
 type = MDA_external
 path = $DELIVER_PATH
 arguments = (\"-e\",)
+# if you want to move mails to a certain imap folder, use -m option like below
+# arguments = (\"-e\", \"-m\", \"some/folder\")
 
 [options]
 read_all = false
