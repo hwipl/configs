@@ -28,6 +28,8 @@ arguments = (\"-e\",)
 [options]
 read_all = false
 delete = false
+# if you want to delete old mails after, e.g., 30 days, uncomment next line
+# delete_after = 30
 received = false
 delivered_to = false
 message_log = $LOG_PATH
