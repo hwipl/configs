@@ -27,3 +27,9 @@ else
 	echo "Do not forget to set a password with:"
 	echo "passwd $USER"
 fi
+
+if [ ! -e "/home/$USER/sdbox" ]; then
+	echo "Creating dbox mail folder in /home/$USER/sdbox"
+	mkdir "/home/$USER/sdbox"
+	chmod 600 "/home/$USER/sdbox"
+fi
