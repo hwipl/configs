@@ -11,6 +11,8 @@ TEMPLATE="# qemu service configuration
 Description=QEMU custom VM service
 
 [Service]
+Type=oneshot
+RemainAfterExit=yes
 WorkingDirectory=$CONF_DIR/%i
 ExecStart=$CONF_DIR/%i/start.sh
 ExecStop=$CONF_DIR/%i/stop.sh
