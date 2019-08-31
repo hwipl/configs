@@ -9,6 +9,7 @@ CONF_DIR=/etc/conf.d/qemu.d
 TEMPLATE="# qemu service configuration
 [Unit]
 Description=QEMU custom VM service
+After=tmp.mount syslog.target network.target
 
 [Service]
 Type=oneshot
