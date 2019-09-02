@@ -6,6 +6,7 @@ CONF_DIR=/etc/conf.d/qemu.d/$NAME
 SERVICE=qemu-custom@$NAME.service
 
 CP=/usr/bin/cp
+SYSTEMCTL=/usr/bin/systemctl
 
 SCRIPTS="
 ../net/add_route.sh
@@ -51,3 +52,13 @@ echo "
 If everything worked, service $SERVICE should be ready.
 Use systemctl to control it, e.g.:
 systemctl enable $SERVICE"
+
+# enable the systemd service?
+echo "
+If you want to enable the service $SERVICE now, answer yes (lowercase) below.
+"
+read -rp "Enable the systemd service [yes/NO]? " yesno
+if [ "$yesno" == "yes" ]; then
+	echo "Enabling systemd service $SERVICE."
+	$SYSTEMCTL enable "$SERVICE"
+fi
