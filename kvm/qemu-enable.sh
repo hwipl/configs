@@ -56,6 +56,13 @@ sed -i "s|ADD_ROUTE=../net/add_route.sh|ADD_ROUTE=./add_route.sh|" \
 sed -i "s|FORWARD_PORT=../net/forward_port.sh|FORWARD_PORT=./forward_port.sh|" \
 	"$CONF_DIR/start.sh"
 
+# correct paths in stop.sh
+echo "Correcting script paths in $CONF_DIR/stop.sh"
+sed -i "s|ADD_ROUTE=../net/add_route.sh|ADD_ROUTE=./add_route.sh|" \
+	"$CONF_DIR/stop.sh"
+sed -i "s|FORWARD_PORT=../net/forward_port.sh|FORWARD_PORT=./forward_port.sh|" \
+	"$CONF_DIR/stop.sh"
+
 # print further instructions
 echo "
 If everything worked, service $SERVICE should be ready.
