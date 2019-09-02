@@ -3,6 +3,7 @@
 NAME=$1
 
 CONF_DIR=/etc/conf.d/qemu.d/$NAME
+SERVICE=qemu-custom@$NAME.service
 
 CP=/usr/bin/cp
 
@@ -44,3 +45,9 @@ sed -i "s|ADD_ROUTE=../net/add_route.sh|ADD_ROUTE=./add_route.sh|" \
 	"$CONF_DIR/start.sh"
 sed -i "s|FORWARD_PORT=../net/forward_port.sh|FORWARD_PORT=./forward_port.sh|" \
 	"$CONF_DIR/start.sh"
+
+# print further instructions
+echo "
+If everything worked, service $SERVICE should be ready.
+Use systemctl to control it, e.g.:
+systemctl enable $SERVICE"
