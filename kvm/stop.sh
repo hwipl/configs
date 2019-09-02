@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SOCK_DIR=/tmp/qemu-VMs
+PID_DIR=$SOCK_DIR
 
 # scripts
 NAT_SCRIPT=./nat.sh
@@ -12,11 +13,22 @@ FORWARD_PORT=../net/forward_port.sh
 BRIDGE_PREFIX=10.10.10.0/24
 BRIDGE_IP=10.10.10.1/24
 
+# other programs
+CAT=/usr/bin/cat
+
 # stop all VMs that have a monitor socket file in SOCK_DIR
 for i in "$SOCK_DIR"/*.sock
 do
 	[[ -e "$i" ]] || break	# handle case of no files
 	echo "system_powerdown" | nc -U "$i"
+done
+
+# stop dnsmasq processes that have a pid file in PID_DIR
+for i in "$PID_DIR"/dnsmasq-*.pid
+do
+	[[ -e "$i" ]] || break	# handle case of no files
+	PID=$($CAT "$i")
+	kill "$PID"
 done
 
 # delete additional routes to bridge interface itself
