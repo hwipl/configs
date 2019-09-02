@@ -3,7 +3,11 @@
 NAME=$1
 
 CONF_DIR=/etc/conf.d/qemu.d/$NAME
-SERVICE=qemu-custom@$NAME.service
+SERVICE_NAME=qemu-custom
+SERVICE_DIR=/etc/systemd/system
+SERVICE_FILE=$SERVICE_DIR/$SERVICE_NAME@.service
+SERVICE=$SERVICE_NAME@$NAME.service
+QEMU_SERVICE=qemu-service.sh
 
 CP=/usr/bin/cp
 SYSTEMCTL=/usr/bin/systemctl
@@ -25,6 +29,11 @@ if [ "$#" -lt 1 ]; then
 	echo "    $1 <name>"
 	echo "Arguments:"
 	echo "    name: name of virtual machine(s) configuration"
+	exit
+fi
+
+if [ ! -e "$SERVICE_FILE" ]; then
+	echo "$SERVICE_FILE does not exist. Did you run $QEMU_SERVICE?"
 	exit
 fi
 
