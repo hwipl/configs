@@ -28,6 +28,28 @@ Arguments:
     user: name of the user you want to add/modify
 ```
 
+`dovecot-backup.sh`: backup the current user's mail to a (temporary) folder and
+optionally create a tar archive:
+
+```
+./dovecot-backup.sh - backup current user's mail
+
+Usage:
+    ./dovecot-backup.sh run
+    ./dovecot-backup.sh tar
+Arguments:
+    run: backup current user's mail to backup directory.
+         Backup directory is mail-backup.
+         If you keep it, subsequent backups run faster
+         because only the changes since the last backup
+         call are backed up.
+    tar: create a tar archive of backup directory.
+         Tar archive is mail-backup-2019-09-05.tar.gz.
+
+After running "run" and/or "tar", make sure to copy the
+backup directory and/or tar archive to a safe location.
+```
+
 ## getmail
 
 `getmail-genrc.sh`: generate a getmailrc for a mail account in `~/.getmail/`:
