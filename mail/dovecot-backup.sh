@@ -22,12 +22,12 @@ Usage:
     $0 tar
 Arguments:
     run: backup current user's mail to backup directory.
-         Backup directory is $BACKUP_DIR.
+         Backup directory is \"$BACKUP_DIR\".
 	 If you keep it, subsequent backups run faster
 	 because only the changes since the last backup
 	 call are backed up.
     tar: create a tar archive of backup directory.
-         Tar archive is $BACKUP_FILE.
+         Tar archive is \"$BACKUP_FILE\".
 
 After running \"run\" and/or \"tar\", make sure to copy the
 backup directory and/or tar archive to a safe location."
