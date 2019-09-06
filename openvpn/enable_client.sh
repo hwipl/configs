@@ -10,6 +10,18 @@ CP=/usr/bin/cp
 LN=/usr/bin/ln
 SYSTEMCTL=/usr/bin/systemctl
 
+USAGE="Usage:
+  $0 <config> <client> [target]
+Arguments:
+  config: name of openvpn configuration folder, that contains client config
+  client: name of client configuration in configuration folder
+  target: name of target configuration in \"/etc/openvpn/client\""
+
+if [ "$#" -lt 2 ]; then
+	echo "$USAGE"
+	exit
+fi
+
 if [ -z "$3" ]; then
        TARGET_NAME=$CLIENT_NAME
 fi
