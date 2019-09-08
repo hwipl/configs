@@ -8,7 +8,7 @@ UP=qemu-ifup.sh
 DOWN=qemu-ifdown.sh
 
 # folder for unix socket files for monitor access
-SOCK_DIR=/tmp/qemu-VMs
+SOCK_DIR=/tmp/qemu-VMs/vmbr0
 
 CMD_LINE="$QEMU"
 CMD_LINE="$CMD_LINE -enable-kvm"
@@ -31,7 +31,7 @@ CMD_LINE="$CMD_LINE -device virtio-rng-pci,rng=rng0"
 
 # make monitor accessible via unix socket
 if [ ! -e "$SOCK_DIR" ]; then
-	mkdir "$SOCK_DIR"
+	mkdir -p "$SOCK_DIR"
 fi
 CMD_LINE="$CMD_LINE -monitor unix:$SOCK_DIR/monitor$VNC.sock,server,nowait"
 
