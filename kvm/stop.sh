@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SOCK_DIR=/tmp/qemu-VMs
+SOCK_DIR=/tmp/qemu-VMs/vmbr0
 PID_DIR=$SOCK_DIR
 
 # scripts
