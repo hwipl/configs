@@ -10,12 +10,15 @@ DOWN=qemu-ifdown.sh
 # folder for unix socket files for monitor access
 SOCK_DIR=/tmp/qemu-VMs/vmbr0
 
+# drive options
+DRIVE_OPTS="cache=none,file=$IMG,if=virtio"
+
 CMD_LINE="$QEMU"
 CMD_LINE="$CMD_LINE -enable-kvm"
 CMD_LINE="$CMD_LINE -m 512"
 CMD_LINE="$CMD_LINE -daemonize"
 CMD_LINE="$CMD_LINE -vnc 127.0.0.1:$VNC"
-CMD_LINE="$CMD_LINE -drive file=$IMG,if=virtio"
+CMD_LINE="$CMD_LINE -drive $DRIVE_OPTS"
 CMD_LINE="$CMD_LINE -netdev tap,id=net0,ifname=$TAP,script=$UP,downscript=$DOWN"
 
 CMD_LINE="$CMD_LINE -device virtio-net-pci,netdev=net0"
