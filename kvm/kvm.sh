@@ -11,7 +11,7 @@ DOWN=qemu-ifdown.sh
 SOCK_DIR=/tmp/qemu-VMs/vmbr0
 
 # drive options
-DRIVE_OPTS="cache=none,file=$IMG,if=virtio"
+DRIVE_OPTS="discard=unmap,cache=none,file=$IMG,if=virtio"
 
 CMD_LINE="$QEMU"
 CMD_LINE="$CMD_LINE -enable-kvm"
