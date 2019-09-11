@@ -2,14 +2,14 @@
 
 # GETMAIL_CONFIGS=$1
 GETMAIL_FOLDER=~/.getmail/
-GETMAIL=getmail
+GETMAIL=/usr/bin/getmail
 
 # set intervall to retrieve mail every 5 minutes
 INTERVALL=5
 
 if [ "$#" -lt 1 ]; then
 	echo "Usage:"
-	echo "    $1 <getmailrc> [getmailrc...]"
+	echo "    $0 <getmailrc> [getmailrc...]"
 	echo "Arguments:"
 	echo "    getmailrc: getmail configuration file in ~/.getmail/"
 	exit
