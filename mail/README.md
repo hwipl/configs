@@ -69,7 +69,7 @@ Arguments:
 
 ```
 Usage:
-     <getmailrc> [getmailrc...]
+    ./getmail-crontab.sh <getmailrc> [getmailrc...]
 Arguments:
     getmailrc: getmail configuration file in ~/.getmail/
 ```
