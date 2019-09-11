@@ -73,3 +73,15 @@ Usage:
 Arguments:
     getmailrc: getmail configuration file in ~/.getmail/
 ```
+
+`getmail-timer.sh`: enable user specific systemd timers for one or more
+getmailrcs in `~./getmail/`:
+
+```
+./getmail-timer.sh - Enable user systemd timer(s) for getmail
+
+Usage:
+    ./getmail-timer.sh <getmailrc> [getmailrc...]
+Arguments:
+    getmailrc: getmail configuration file in ~/.getmail/
+```
