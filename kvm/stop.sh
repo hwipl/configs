@@ -20,8 +20,11 @@ CAT=/usr/bin/cat
 for i in "$SOCK_DIR"/*.sock
 do
 	[[ -e "$i" ]] || break	# handle case of no files
-	echo "system_powerdown" | nc -U "$i"
+	echo "system_powerdown" | nc -U "$i" &
 done
+
+# wait for powerdown commands
+wait
 
 # stop dnsmasq processes that have a pid file in PID_DIR
 for i in "$PID_DIR"/dnsmasq-*.pid
