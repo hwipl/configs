@@ -11,7 +11,7 @@ if [ -f "$ETC/dovecot.conf" ] || [ -d "$ETC/conf.d" ]; then
 	exit
 fi
 
-$CP $DOVECOTCONF $ETC 
+$CP $DOVECOTCONF $ETC
 $CP -r $CONFD $ETC
 
 # uncomment ssl_dh line in $CONFD/10-ssl.conf
