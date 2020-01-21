@@ -51,8 +51,8 @@ backup directory and/or tar archive to a safe location.
 ```
 
 `dovecot-sieve.sh`: enable the sieve plugin in the lda and lmtp configuration
-files of dovecot, so users can use sieve. `example.dovecot.sieve" is an example
-of a `.dovecot.sieve" file that can be put in a user's home directory.
+files of dovecot, so users can use sieve. `example.dovecot.sieve` is an example
+of a `.dovecot.sieve` file that can be put in a user's home directory.
 
 ## getmail
 
