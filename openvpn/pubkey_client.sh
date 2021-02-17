@@ -14,8 +14,9 @@ keepalive 10 60
 ping-timer-rem
 persist-tun
 persist-key
-user nobody
-group nobody
+# uncomment if your ovpn does not run as unprivileged user
+# user nobody
+# group nobody
 daemon"
 
 echo "$LINES"
