@@ -15,7 +15,7 @@ PID_FILE=$PID_DIR/dnsmasq-$IF.pid
 # usage
 USAGE="Usage:
   $0 start <if> <ip_range> <routes> [host-defs]
-  $0 stop
+  $0 stop <if>
 
 Arguments:
   if:		network interface, e.g., eth0
@@ -25,10 +25,12 @@ Arguments:
 		0.0.0.0/0,192.168.1.1,192.168.2.0/24,192.168.1.1
   host_defs:	space-separated MAC,IP host definitions, e.g.:
 		52:54:00:00:00:02,192.168.1.2 52:54:00:00:00:03,192.168.1.3
-Example:
+Examples:
   $0 start eth1 192.168.1.20,192.168.1.50 0.0.0.0/0,192.168.1.1 \\
 	52:54:00:00:00:02,192.168.1.2 \\
 	52:54:00:00:00:03,192.168.1.3
+
+  $0 stop eth1
 "
 
 # start dnsmasq
@@ -71,11 +73,20 @@ function start_dnsmasq {
 
 # stop dnsmasq
 function stop_dnsmasq {
-	pid=$(cat PID_FILE)
+	# make sure parameters are there
+	if [ -z "$IF" ]; then
+		echo "$USAGE"
+		exit 1
+	fi
+
+	# read pid from pid file
+	pid=$(cat "$PID_FILE")
 	if [ -z "$pid" ]; then
 		echo "could not get dnsmasq pid"
 		exit 1
 	fi
+
+	# kill pid
 	echo "Stopping dnsmasq process with pid $pid"
 	kill "$pid"
 }
