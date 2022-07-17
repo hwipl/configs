@@ -30,3 +30,18 @@ Arguments:
 `enable_ip_forwarding.sh`: enable IP forwarding for IPv4 persistently by
 creating a sysctl configuration file in `/etc/sysctl.d/90-ip-forward.conf` and
 loading it.
+
+`nat-nftables.sh`: start NAT for outgoing traffic on a network interface:
+
+```
+Usage:
+  ./nat-nftables.sh start <ext_if>
+  ./nat-nftables.sh stop <ext_if>
+
+Arguments:
+  ext_if:       external network interface, e.g.: eth1
+
+Examples:
+  ./nat-nftables.sh start eth1
+  ./nat-nftables.sh stop eth1
+```
