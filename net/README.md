@@ -45,3 +45,11 @@ Examples:
   ./nat-nftables.sh start eth1
   ./nat-nftables.sh stop eth1
 ```
+
+`ip-forward.sh`: start ip forwarding:
+
+```
+Usage:
+  ./ip_forward.sh start
+  ./ip_forward.sh stop
+```
